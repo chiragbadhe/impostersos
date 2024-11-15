@@ -38,9 +38,12 @@ const Header = () => {
         <div className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex w-full md:w-auto flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 mt-4 md:mt-0`}>
           <nav className="w-full md:w-auto">
             <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 text-white text-center">
-              <li className="hover:text-gray-200 cursor-pointer transition">Play</li>
-              <li className="hover:text-gray-200 cursor-pointer transition">Leaderboard</li>
-              <li className="hover:text-gray-200 cursor-pointer transition">About</li>
+              <li className="hover:text-gray-200 cursor-pointer transition">
+                <a href="/">Play</a>
+              </li>
+              <li className="hover:text-gray-200 cursor-pointer transition">
+                <a href="/about">How To Play</a>
+              </li>
             </ul>
           </nav>
           

@@ -67,7 +67,7 @@ const RoomPage = () => {
         </h1>
         <div className="mb-8">
           <img
-            src="https://example.com/game-image.png"
+            src="https://static1.srcdn.com/wordpress/wp-content/uploads/2020/10/Among-Us-Impostor-Screen.jpg"
             alt="Game Image"
             className="w-full mb-6 shadow-xl"
           />
@@ -97,11 +97,44 @@ const RoomPage = () => {
                   alt={`Profile of ${player.name}`}
                   className="w-16 h-16 mr-4 rounded-full shadow-md"
                 />
-                <div>
-                  <span className="text-xl font-semibold block">
-                    {player.name}
-                  </span>
-                  <span className="text-sm text-gray-300">ID: {player.id}</span>
+                <div className="flex items-center">
+                  <div>
+                    <span className="text-xl font-semibold block">
+                      {player.name}
+                    </span>
+                    <span className="text-sm text-gray-300">ID: {player.id}</span>
+                  </div>
+                  <div className="ml-4">
+                    {player.isSpeaking ? (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6 text-green-500"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M3 10a1 1 0 011-1h3l3-3a1 1 0 011.414 0L13 9h2a1 1 0 011 1v1a1 1 0 01-1 1h-2l-3 3a1 1 0 01-1.414 0L7 11H4a1 1 0 01-1-1V10z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    ) : (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6 text-red-500"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 9l10.5-10.5M21 21L3 3m7.5 7.5v3a3 3 0 006 0v-3m-6 0l6 6"
+                        />
+                      </svg>
+                    )}
+                  </div>
                 </div>
               </div>
               <div className="flex items-center">
