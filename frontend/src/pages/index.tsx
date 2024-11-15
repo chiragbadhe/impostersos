@@ -3,11 +3,6 @@ import localFont from "next/font/local";
 import Header from "@/components/Header";
 import { useRouter } from "next/router";
 
-const londrina = localFont({
-  src: "./fonts/Londrina_Solid/LondrinaSolid-Regular.ttf",
-  variable: "--font-londrina",
-});
-
 export default function Home() {
   const router = useRouter();
 
@@ -22,15 +17,8 @@ export default function Home() {
 
   return (
     <div
-      className={`${londrina.variable} font-[family-name:var(--font-londrina)] min-h-screen w-full overflow-hidden relative`}
+      className={`min-h-screen w-full overflow-hidden relative`}
     >
-      <div className="absolute top-0 left-0 w-full h-full bg-black/30" />{" "}
-      {/* Tint overlay */}
-      <img
-        src="/main-bg.jpg"
-        alt="Main background"
-        className="absolute top-0 left-0 w-full h-full object-cover -z-10"
-      />
       <Header />
       <div className="container mx-auto px-4 flex items-center justify-center flex-col my-[40px] md:my-[70px] relative">
         {/* Floating animated shapes in background */}
@@ -60,14 +48,25 @@ export default function Home() {
               Create your own game room and invite friends to join. Set custom rules and start playing!
             </p>
 
-            <input
-                type="text"
-                placeholder="fhasghfhdshijfhjs"
-                disabled
-                className="w-full bg-white/10 text-white text-lg md:text-xl py-3 md:py-4 px-4 md:px-6  rounded-xl
+            <div className="w-full bg-white/10 text-white text-lg md:text-xl py-3 md:py-4 px-4 md:px-6 rounded-xl
                          placeholder-white/50 outline-none border-2 border-[#ff2e63]/30 mb-[16px]
-                         focus:border-[#ff2e63] transition-all duration-300"
-              />
+                         focus:border-[#ff2e63] transition-all duration-300">
+              <div className="relative">
+                <select
+                  className="w-full h-full appearance-none bg-transparent border-none text-white text-lg md:text-xl rounded-xl pr-10 pl-4"
+                >
+                  <option value="3">3 Players</option>
+                  <option value="4">4 Players</option>
+                  <option value="5">5 Players</option>
+                  <option value="6">6 Players</option>
+                </select>
+                <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                  <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
             
             <button
               onClick={handleCreateRoom}
