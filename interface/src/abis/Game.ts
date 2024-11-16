@@ -78,6 +78,16 @@ export default [
         type: "string",
         internalType: "string",
       },
+      {
+        name: "_imposterIndex",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "usePyth",
+        type: "bool",
+        internalType: "bool",
+      },
     ],
     outputs: [],
     stateMutability: "payable",
@@ -166,6 +176,30 @@ export default [
         name: "",
         type: "address[]",
         internalType: "address[]",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "hasClaimedReward",
+    inputs: [
+      {
+        name: "roomId",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "player",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",

@@ -81,8 +81,8 @@ export function Playground({ players, roomId, ipfs }: PlaygroundProps) {
   const toggleMute = () => setIsMuted((muted) => !muted);
 
   return (
-    <div className="flex flex-col space-y-6 relative">
-      <div className="p-2 rounded-xl bg-white">
+    <div className="flex flex-col items-center space-y-6">
+      <div className="p-2 rounded-xl w-[256px] h-[256px]">
         {isPhotosLoading ? (
           <svg
             className="animate-spin h-6 w-6 md:h-8 md:w-8 text-green-600"
@@ -108,9 +108,9 @@ export function Playground({ players, roomId, ipfs }: PlaygroundProps) {
           <img
             src={isImposter ? photos[1]?.src?.medium : photos[0]?.src?.medium}
             alt="Game Image"
-            className="w-full h-full object-cover shadow-xl rounded-md"
-            width={250}
-            height={250}
+            className="w-full h-full object-contain rounded-md"
+            width={256}
+            height={256}
           />
         )}
       </div>
@@ -119,14 +119,17 @@ export function Playground({ players, roomId, ipfs }: PlaygroundProps) {
           playersData.map((player, i) => (
             <div
               key={player.address}
-              onClick={() => handleSelectImposter(player.address)}
+              onClick={() => {
+                if (hasAlreadyVoted) return;
+                handleSelectImposter(player.address);
+              }}
               className={`p-4 m-2 shadow-lg backdrop-blur-md flex items-center justify-between rounded-lg w-full cursor-pointer ${
                 selectedImposter === player.address
                   ? "ring-2 ring-green-500"
                   : ""
               }`}
             >
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center">
                 <img
                   src={player.avatar}
                   alt={`Profile of ${player.address}`}
@@ -141,43 +144,45 @@ export function Playground({ players, roomId, ipfs }: PlaygroundProps) {
                   <span className="text-sm text-gray-300">ID: {i}</span>
                 </div>
               </div>
-              <div className="flex items-center">
-                <input
-                  type="radio"
-                  name="imposter"
-                  value={player.address}
-                  checked={selectedImposter === player.address}
-                  onChange={() => handleSelectImposter(player.address)}
-                  className="w-6 h-6 text-red-600 bg-gray-100 border-gray-300 focus:ring-red-500"
-                />
-              </div>
+              {!hasAlreadyVoted && (
+                <div className="flex items-center">
+                  <input
+                    type="radio"
+                    name="imposter"
+                    value={player.address}
+                    checked={selectedImposter === player.address}
+                    onChange={() => handleSelectImposter(player.address)}
+                    className="w-6 h-6 text-red-600 bg-gray-100 border-gray-300 focus:ring-red-500"
+                  />
+                </div>
+              )}
             </div>
           ))}
-      </div>
-      <div className="absolute bottom-4 inset-x-0 left-1/2 transform -translate-x-1/2 bg-white p-2 rounded-full flex items-center space-x-2">
-        <button
-          onClick={toggleMute}
-          className={`w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition-colors shadow-lg focus:outline-none`}
-        >
-          {isMuted ? <Mic /> : <MicOff />}
-        </button>
-        <button
-          onClick={() => {
-            handleVote();
-          }}
-          disabled={!selectedImposter || isVotePending}
-          className={`px-8 py-3 rounded-full transition-transform flex-grow disabled:cursor-not-allowed disabled:opacity-60 ${
-            selectedImposter
-              ? "bg-green-600 text-white hover:bg-green-700 hover:scale-105"
-              : "bg-green-400 cursor-not-allowed text-white"
-          }`}
-        >
-          {isVotePending
-            ? "Voting..."
-            : hasAlreadyVoted
-              ? "Voted!"
-              : "Mark as Imposter"}
-        </button>
+        <div className="bg-white p-2 rounded-full flex items-center space-x-2 w-full md:max-w-80 md:mx-auto">
+          <button
+            onClick={toggleMute}
+            className={`w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition-colors shadow-lg focus:outline-none`}
+          >
+            {isMuted ? <Mic /> : <MicOff />}
+          </button>
+          <button
+            onClick={() => {
+              handleVote();
+            }}
+            disabled={!selectedImposter || isVotePending || hasAlreadyVoted}
+            className={`px-8 py-3 rounded-full transition-transform flex-grow disabled:cursor-not-allowed disabled:opacity-60 ${
+              selectedImposter
+                ? "bg-green-600 text-white hover:bg-green-700 hover:scale-105"
+                : "bg-green-400 cursor-not-allowed text-white"
+            }`}
+          >
+            {isVotePending
+              ? "Voting..."
+              : hasAlreadyVoted
+                ? "Voted!"
+                : "Mark as Imposter"}
+          </button>
+        </div>
       </div>
     </div>
   );
