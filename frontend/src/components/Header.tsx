@@ -8,12 +8,14 @@ const Header = () => {
     <div className="bg-black/50 backdrop-blur-sm p-4 shadow-lg">
       <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center">
         <div className="flex items-center space-x-2">
-          <h1 className="text-2xl md:text-4xl font-bold text-white tracking-wider">
-            ImposterSOS
-          </h1>
-          <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full uppercase tracking-wider">
-            Beta
-          </span>
+          <a href="/" className="flex items-center space-x-2 cursor-pointer">
+            <h1 className="text-2xl md:text-4xl font-bold text-white tracking-wider">
+              ImposterSOS
+            </h1>
+            <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full uppercase tracking-wider">
+              Beta
+            </span>
+          </a>
         </div>
 
         {/* Mobile menu button */}
