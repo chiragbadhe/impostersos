@@ -26,7 +26,7 @@ export default function WaitingLobby({ players }: WaitingLobbyProps) {
               key={player.address}
               className={`flex items-center justify-between rounded-lg w-full`}
             >
-              <div className="flex items-center">
+              <div className="flex items-center space-x-4">
                 <img
                   src={player.avatar}
                   alt={`Profile of ${player.address}`}
