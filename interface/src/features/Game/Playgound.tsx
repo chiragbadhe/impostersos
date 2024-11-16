@@ -1,10 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
-import { useReadGameHasPlayerVoted, useWriteGameVote } from "@/generated";
+import {
+  useReadGameGetImposter,
+  useReadGameHasPlayerVoted,
+  useWriteGameVote,
+} from "@/generated";
 import { formatAddress } from "@/utils/format";
 import { playersWithMetadata } from "@/utils/game";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Mic, MicOff } from "lucide-react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Address } from "viem";
 import { baseSepolia } from "viem/chains";
 import { useAccount, usePublicClient } from "wagmi";
@@ -12,9 +16,10 @@ import { useAccount, usePublicClient } from "wagmi";
 interface PlaygroundProps {
   players: Address[];
   roomId: bigint;
+  ipfs: string;
 }
 
-export function Playground({ players, roomId }: PlaygroundProps) {
+export function Playground({ players, roomId, ipfs }: PlaygroundProps) {
   const [selectedImposter, setSelectedImposter] = useState<Address | null>(
     null
   );
@@ -53,6 +58,24 @@ export function Playground({ players, roomId }: PlaygroundProps) {
     },
   });
 
+  const { data: photos, isLoading: isPhotosLoading } = useQuery({
+    queryKey: ["photos", ipfs],
+    queryFn: async () => {
+      const response = await fetch(
+        `https://moccasin-anxious-heron-473.mypinata.cloud/ipfs/${ipfs}`
+      );
+      const photos = await response.json();
+      return photos;
+    },
+  });
+
+  const { data: imposter } = useReadGameGetImposter({ args: [roomId] });
+
+  const isImposter = useMemo(() => {
+    if (!address || !imposter) return false;
+    return address.toLowerCase() === imposter.toLowerCase();
+  }, [address, imposter]);
+
   const handleSelectImposter = (address: Address) =>
     setSelectedImposter(address);
   const toggleMute = () => setIsMuted((muted) => !muted);
@@ -60,13 +83,36 @@ export function Playground({ players, roomId }: PlaygroundProps) {
   return (
     <div className="flex flex-col space-y-6 relative">
       <div className="p-2 rounded-xl bg-white">
-        <img
-          src="https://static1.srcdn.com/wordpress/wp-content/uploads/2020/10/Among-Us-Impostor-Screen.jpg"
-          alt="Game Image"
-          className="w-full h-full object-cover shadow-xl rounded-md"
-          width={250}
-          height={250}
-        />
+        {isPhotosLoading ? (
+          <svg
+            className="animate-spin h-6 w-6 md:h-8 md:w-8 text-green-600"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              className="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"
+            ></circle>
+            <path
+              className="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+            ></path>
+          </svg>
+        ) : (
+          <img
+            src={isImposter ? photos[1]?.src?.medium : photos[0]?.src?.medium}
+            alt="Game Image"
+            className="w-full h-full object-cover shadow-xl rounded-md"
+            width={250}
+            height={250}
+          />
+        )}
       </div>
       <div className="flex flex-col w-full space-y-4">
         {playersData &&

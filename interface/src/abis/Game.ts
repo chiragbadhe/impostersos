@@ -7,6 +7,11 @@ export default [
         type: "uint256",
         internalType: "uint256",
       },
+      {
+        name: "_entropyAddress",
+        type: "address",
+        internalType: "address",
+      },
     ],
     stateMutability: "nonpayable",
   },
@@ -22,6 +27,29 @@ export default [
       },
     ],
     stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "_entropyCallback",
+    inputs: [
+      {
+        name: "sequence",
+        type: "uint64",
+        internalType: "uint64",
+      },
+      {
+        name: "provider",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "randomNumber",
+        type: "bytes32",
+        internalType: "bytes32",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
   },
   {
     type: "function",
@@ -46,9 +74,9 @@ export default [
         internalType: "uint256",
       },
       {
-        name: "imposterIndex",
-        type: "uint256",
-        internalType: "uint256",
+        name: "_ipfsHash",
+        type: "string",
+        internalType: "string",
       },
     ],
     outputs: [],
@@ -66,6 +94,19 @@ export default [
     ],
     outputs: [],
     stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "entropy",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "contract IEntropy",
+      },
+    ],
+    stateMutability: "view",
   },
   {
     type: "function",
@@ -87,6 +128,25 @@ export default [
         name: "",
         type: "uint256",
         internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getImposter",
+    inputs: [
+      {
+        name: "roomId",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
@@ -123,6 +183,25 @@ export default [
         name: "player",
         type: "address",
         internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "isRoomPending",
+    inputs: [
+      {
+        name: "roomId",
+        type: "uint256",
+        internalType: "uint256",
       },
     ],
     outputs: [
@@ -215,6 +294,11 @@ export default [
         name: "rewardsCalculated",
         type: "bool",
         internalType: "bool",
+      },
+      {
+        name: "ipfsHash",
+        type: "string",
+        internalType: "string",
       },
     ],
     stateMutability: "view",

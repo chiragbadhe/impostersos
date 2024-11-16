@@ -9,6 +9,7 @@ import { Result } from "@/features/Game/Result";
 
 const RoomPage = () => {
   const router = useRouter();
+
   const { id: roomId } = router.query;
 
   const [isTimerExpired, setIsTimeExpired] = useState(false);
@@ -30,6 +31,7 @@ const RoomPage = () => {
 
   const isValidRoom = useMemo(() => room && room[0] > BigInt(0), [room]);
   const isGameEnded = useMemo(() => room && room[5], [room]);
+  const ipfs = useMemo(() => (room ? room[9] : ""), [room]);
   const remainingPlayers = useMemo(() => {
     if (isValidRoom && players && room) {
       return Number(room[0] - BigInt(players.length));
@@ -48,7 +50,7 @@ const RoomPage = () => {
               Room: {roomId}
             </h1>
           )}
-          {room && room[4] && ((room && !room[5]) || !isTimerExpired) ? (
+          {room && room[4] && ((room && ![5]) || !isTimerExpired) ? (
             <Timer
               minutes={10}
               startedAt={room && Number(room[1])}
@@ -71,23 +73,10 @@ const RoomPage = () => {
           <Playground
             roomId={BigInt(roomId as string)}
             players={players ? [...players] : []}
+            ipfs={ipfs}
           />
         )}
       </div>
-
-      {/* {showResultPage && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full">
-            <ResultPage
-              isWinner={true}
-              onClose={() => {
-                setSelectedImposterId(null);
-                setShowResultPage(false);
-              }}
-            />
-          </div>
-        </div>
-      )} */}
     </div>
   );
 };
