@@ -3,22 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate": "bun wagmi generate"
   },
   "dependencies": {
-    "@dynamic-labs/ethereum": "^3.6.2",
-    "@dynamic-labs/flow": "^3.6.2",
-    "@dynamic-labs/sdk-react-core": "^3.6.2",
-    "@dynamic-labs/wagmi-connector": "^3.6.2",
+    "@privy-io/react-auth": "^1.94.2",
+    "@privy-io/wagmi": "^0.2.12",
     "@tanstack/react-query": "^5.60.2",
     "lucide-react": "^0.460.0",
     "next": "15.0.3",
-    "react": "19.0.0-rc-66855b96-20241106",
+    "react": "^18.3.1",
     "react-canvas-confetti": "^2.0.7",
-    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "react-dom": "^18.3.1",
     "viem": "^2.21.45",
     "wagmi": "^2.12.32"
   },
@@ -26,6 +25,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@wagmi/cli": "^2.1.15",
     "eslint": "^8",
     "eslint-config-next": "15.0.3",
     "postcss": "^8",

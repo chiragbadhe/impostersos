@@ -1,5 +1,3 @@
-import Image from "next/image";
-import localFont from "next/font/local";
 import Header from "@/components/Header";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -84,10 +82,10 @@ export default function Home() {
 
             <button
               onClick={handleCreateRoom}
-              className="w-full bg-gradient-to-r from-[#ff2e63] to-[#ff447c] 
+              className="w-full bg-gradient-to-r from-[#ff2e63] to-[#ff447c]
                        text-white text-xl md:text-2xl font-bold py-4 md:py-6 px-6 md:px-8 rounded-2xl
-                       transform transition-all duration-300 
-                       hover:scale-105 hover:shadow-[0_0_50px_rgba(255,46,99,0.4)] 
+                       transform transition-all duration-300
+                       hover:scale-105 hover:shadow-[0_0_50px_rgba(255,46,99,0.4)]
                        active:scale-95 group relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
@@ -119,7 +117,8 @@ export default function Home() {
             </h3>
             <p className="text-gray-300 text-center text-sm md:text-base mb-6">
               Enter a room ID to join an existing game. Connect with other
-              players and compete together! A deposit of 5 USDC is required to join the room.
+              players and compete together! A deposit of 5 USDC is required to
+              join the room.
             </p>
             <div className="space-y-4">
               <input
@@ -135,7 +134,7 @@ export default function Home() {
                 onClick={() => handleJoinRoom(roomId)}
                 className="w-full bg-gradient-to-r from-[#4d79ff] to-[#668aff]
                          text-white text-xl md:text-2xl font-bold py-4 md:py-6 px-6 md:px-8 rounded-2xl
-                         transform transition-all duration-300 
+                         transform transition-all duration-300
                          hover:scale-105 hover:shadow-[0_0_50px_rgba(77,121,255,0.4)]
                          active:scale-95 group relative overflow-hidden"
               >
