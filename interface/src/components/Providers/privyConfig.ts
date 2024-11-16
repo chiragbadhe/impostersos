@@ -1,5 +1,12 @@
 import type { PrivyClientConfig } from "@privy-io/react-auth";
-import { baseSepolia } from "viem/chains";
+import {
+  baseSepolia,
+  flowTestnet,
+  lineaSepolia,
+  mantleSepoliaTestnet,
+  morphHolesky,
+  scrollSepolia,
+} from "viem/chains";
 
 export const privyConfig: PrivyClientConfig = {
   embeddedWallets: {
@@ -9,5 +16,12 @@ export const privyConfig: PrivyClientConfig = {
   appearance: {
     showWalletLoginFirst: true,
   },
-  supportedChains: [baseSepolia],
+  supportedChains: [
+    baseSepolia,
+    flowTestnet,
+    mantleSepoliaTestnet,
+    scrollSepolia,
+    morphHolesky,
+    lineaSepolia,
+  ],
 };

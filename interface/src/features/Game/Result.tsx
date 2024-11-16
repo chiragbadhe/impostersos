@@ -1,20 +1,25 @@
 import {
   useReadGameGetClaimableReward,
+  useReadGameHasClaimedReward,
   useWriteGameClaimReward,
 } from "@/generated";
 import { useMutation } from "@tanstack/react-query";
-import { useRouter } from "next/router";
+import Link from "next/link";
 import { formatEther } from "viem";
 import { baseSepolia } from "viem/chains";
 import { useAccount, usePublicClient } from "wagmi";
 
 interface ResultProps {
   roomId: bigint;
+  setPopConfetti: (v: boolean) => void;
 }
 
-export function Result({ roomId }: ResultProps) {
+export function Result({ roomId, setPopConfetti }: ResultProps) {
   const { address } = useAccount();
-  const router = useRouter();
+  const { data: hasAlreadyClaimed, refetch: fetchClaimStatus } =
+    useReadGameHasClaimedReward({
+      args: address ? [roomId, address] : undefined,
+    });
 
   const { data: claimableReward, isPending: isFetchingClaimableReward } =
     useReadGameGetClaimableReward({
@@ -32,8 +37,8 @@ export function Result({ roomId }: ResultProps) {
               args: [roomId],
             });
             await client?.waitForTransactionReceipt({ hash });
-            // TODO: replace w/ confetti here
-            router.push("/");
+            await fetchClaimStatus();
+            setPopConfetti(true);
           }
         } catch (error) {
           console.error("Failed to claim", error);
@@ -42,28 +47,45 @@ export function Result({ roomId }: ResultProps) {
     });
 
   return (
-    <div className="flex flex-col space-y-4 relative items-center justify-center">
-      {claimableReward && claimableReward > BigInt(0) ? (
-        <p className="text-2xl">🎉 Congratulations, You Earned 🎉</p>
-      ) : isFetchingClaimableReward ? (
-        <p className="text-2xl">Calculating Reward...</p>
-      ) : (
-        <p className="text-2xl text-red-300">Better Luck Next Time!</p>
-      )}
-      {claimableReward && (
-        <div className="text-5xl">{formatEther(claimableReward)} ETH</div>
-      )}
-      {claimableReward && claimableReward > BigInt(0) && (
-        <button
-          onClick={() => {
-            handleClaimReward();
-          }}
-          disabled={isClaimPending}
-          className={`px-8 py-3 rounded-full transition-transform flex-grow disabled:cursor-not-allowed disabled:opacity-60 bg-white text-green-600 hover:scale-105`}
-        >
-          {isClaimPending ? "Claiming..." : "Claim Reward"}
-        </button>
-      )}
-    </div>
+    <>
+      <div className="flex flex-col space-y-4 relative items-center justify-center">
+        {claimableReward && claimableReward > BigInt(0) ? (
+          <p className="text-2xl">🎉 Congratulations, You Earned 🎉</p>
+        ) : isFetchingClaimableReward ? (
+          <p className="text-2xl">Calculating Reward...</p>
+        ) : (
+          <p className="text-2xl text-red-300">Better Luck Next Time!</p>
+        )}
+        {claimableReward && (
+          <div className="text-5xl">{formatEther(claimableReward)} ETH</div>
+        )}
+        <div className="flex items-center space-x-4">
+          {claimableReward &&
+          claimableReward > BigInt(0) &&
+          !hasAlreadyClaimed ? (
+            <button
+              onClick={() => handleClaimReward()}
+              disabled={isClaimPending}
+              className="px-8 py-3 rounded-full transition-transform flex-grow disabled:cursor-not-allowed disabled:opacity-60 bg-white text-green-600 hover:scale-105"
+            >
+              {isClaimPending ? "Claiming..." : "Claim Reward"}
+            </button>
+          ) : (
+            <Link href="/">
+              <button className="px-8 py-3 rounded-full transition-transform flex-grow disabled:cursor-not-allowed disabled:opacity-60 bg-white text-gray-900 hover:scale-105">
+                Play Again!
+              </button>
+            </Link>
+          )}
+          {hasAlreadyClaimed && (
+            <Link href={`#`} target="_blank" rel="noreferrer">
+              <button className="px-8 py-3 rounded-full transition-transform flex-grow disabled:cursor-not-allowed disabled:opacity-60 bg-white text-gray-900 hover:scale-105">
+                View on Blockscout
+              </button>
+            </Link>
+          )}
+        </div>
+      </div>
+    </>
   );
 }
