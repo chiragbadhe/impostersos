@@ -50,7 +50,7 @@ const RoomPage = () => {
               Room: {roomId}
             </h1>
           )}
-          {room && room[4] && ((room && ![5]) || !isTimerExpired) ? (
+          {room && room[4] && ((room && !room[5]) || !isTimerExpired) ? (
             <Timer
               minutes={10}
               startedAt={room && Number(room[1])}
