@@ -10,7 +10,7 @@ export default defineConfig({
       name: "game",
       abi: gameAbi,
       address: {
-        [baseSepolia.id]: "0x474e84b54C897e062001b13CdB97497BB515b68b",
+        [baseSepolia.id]: "0x86Ad3a06D4A28abfF9460CC4A604F83c4d537Fa7",
       },
     },
   ],
