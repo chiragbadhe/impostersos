@@ -9,6 +9,7 @@ import gameAbi from "@/abis/Game";
 import { useMutation } from "@tanstack/react-query";
 import { generateImages } from "@/utils/image";
 import { pinata } from "@/utils/ipfs";
+import { generateRandomPlayerIndex } from "@/utils/game";
 
 export default function Home() {
   const router = useRouter();
@@ -28,6 +29,7 @@ export default function Home() {
     useMutation({
       mutationKey: ["createRoom", createRoom, client, numPlayers, router],
       mutationFn: async () => {
+        const imposterIndex = generateRandomPlayerIndex(numPlayers);
         try {
           const photos = await generateImages();
 
@@ -36,8 +38,14 @@ export default function Home() {
               groupId: "230b2a95-9360-4560-a6b7-37fc57346f91",
             });
 
+            const usePyth = false;
             const hash = await createRoom({
-              args: [BigInt(numPlayers), IpfsHash],
+              args: [
+                BigInt(numPlayers),
+                IpfsHash,
+                BigInt(imposterIndex),
+                usePyth,
+              ],
               value: parseEther("0.0001"),
             });
 
@@ -45,10 +53,11 @@ export default function Home() {
             if (!receipt) throw new Error("Failed to get transaction receipt");
             if (!receipt.logs?.[0]) throw new Error("No event logs found");
 
+            // TODO: change index based on usePyth bool
             const { args } = decodeEventLog({
               abi: gameAbi,
-              data: receipt.logs[1].data,
-              topics: receipt.logs[1].topics,
+              data: receipt.logs[usePyth ? 1 : 0].data,
+              topics: receipt.logs[usePyth ? 1 : 0].topics,
             });
 
             const newRoomId = args.roomId;
@@ -65,11 +74,13 @@ export default function Home() {
 
   const { mutateAsync: handleJoinRoom, isPending: isRoomJoinPending } =
     useMutation({
-      mutationKey: ["joinRoom", router],
+      mutationKey: ["joinRoom", roomId],
       mutationFn: async () => {
+        if (!roomId) throw new Error("Room ID is required");
+
         try {
           const hash = await joinRoom({
-            args: [BigInt(roomId as string)],
+            args: [BigInt(roomId)],
             value: parseEther("0.0001"),
           });
 
@@ -78,7 +89,7 @@ export default function Home() {
 
           router.push(`/room/${roomId}`);
         } catch (error) {
-          console.error("Failed to create room:", error);
+          console.error("Failed to join room:", error);
         }
       },
     });
@@ -95,10 +106,10 @@ export default function Home() {
         </div>
 
         <div className="text-center mb-10 md:mb-16 relative">
-          <h1 className="text-5xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-purple-400 mb-3 md:mb-4 animate-pulse-slow">
-            Imposter Quest
+          <h1 className="text-5xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-yellow-500 mb-3 md:mb-4 animate-pulse-slow">
+            Catch Me If You Can
           </h1>
-          <p className="text-purple-200 text-lg md:text-2xl font-semibold tracking-wide px-4">
+          <p className="text-white/90 text-lg md:text-2xl font-semibold tracking-wide px-4">
             Find the imposter. Win the prize. Become a legend.
           </p>
           <div className="absolute -top-8 -right-6 md:-top-10 md:-right-10 animate-bounce-slow">
@@ -212,9 +223,8 @@ export default function Home() {
               Join Existing Room
             </h3>
             <p className="text-gray-300 text-center text-sm md:text-base mb-6">
-              Enter a room ID to join an existing game. Connect with other
-              players and compete together! A deposit of 5 USDC is required to
-              join the room.
+              Enter a room ID to join an existing game. A deposit of 0.0001 ETH
+              is required to join the room.
             </p>
             <div className="space-y-4">
               <input
@@ -321,7 +331,7 @@ export default function Home() {
                 <p className="text-xl md:text-3xl font-bold text-white mb-1 md:mb-2 text-shadow-glow">
                   {stat.value}
                 </p>
-                <p className="text-[#8f8fa3] text-sm md:text-lg font-medium">
+                <p className="text-white text-sm md:text-lg font-medium">
                   {stat.label}
                 </p>
               </div>

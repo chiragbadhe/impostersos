@@ -6,6 +6,8 @@ import Timer from "@/components/Timer";
 import WaitingLobby from "@/features/Game/WaitingLobby";
 import { Playground } from "@/features/Game/Playgound";
 import { Result } from "@/features/Game/Result";
+import useWindowSize from "react-use/lib/useWindowSize";
+import Confetti from "react-confetti";
 
 const RoomPage = () => {
   const router = useRouter();
@@ -13,7 +15,9 @@ const RoomPage = () => {
   const { id: roomId } = router.query;
 
   const [isTimerExpired, setIsTimeExpired] = useState(false);
+  const [popConfetti, setPopConfetti] = useState(false);
 
+  const { width, height } = useWindowSize();
   const { data: players } = useReadGameGetRoomPlayers({
     args: roomId ? [BigInt(roomId as string)] : undefined,
     query: {
@@ -68,7 +72,10 @@ const RoomPage = () => {
             players={players ? [...players] : []}
           />
         ) : (room && room[5]) || isTimerExpired ? (
-          <Result roomId={BigInt(roomId as string)} />
+          <Result
+            roomId={BigInt(roomId as string)}
+            setPopConfetti={setPopConfetti}
+          />
         ) : (
           <Playground
             roomId={BigInt(roomId as string)}
@@ -77,6 +84,14 @@ const RoomPage = () => {
           />
         )}
       </div>
+      {popConfetti && (
+        <Confetti
+          width={width}
+          height={height}
+          numberOfPieces={500}
+          recycle={false}
+        />
+      )}
     </div>
   );
 };
