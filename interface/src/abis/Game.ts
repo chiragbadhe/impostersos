@@ -1,7 +1,13 @@
 export default [
   {
     type: "constructor",
-    inputs: [],
+    inputs: [
+      {
+        name: "_stakeAmount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
     stateMutability: "nonpayable",
   },
   {
@@ -19,26 +25,21 @@ export default [
   },
   {
     type: "function",
-    name: "STAKE_AMOUNT",
-    inputs: [],
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-        internalType: "uint256",
-      },
-    ],
-    stateMutability: "view",
-  },
-  {
-    type: "function",
-    name: "createRoom",
+    name: "claimReward",
     inputs: [
       {
         name: "roomId",
         type: "uint256",
         internalType: "uint256",
       },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "createRoom",
+    inputs: [
       {
         name: "numberOfPlayers",
         type: "uint256",
@@ -68,6 +69,73 @@ export default [
   },
   {
     type: "function",
+    name: "getClaimableReward",
+    inputs: [
+      {
+        name: "roomId",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "player",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getRoomPlayers",
+    inputs: [
+      {
+        name: "roomId",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "address[]",
+        internalType: "address[]",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "hasPlayerVoted",
+    inputs: [
+      {
+        name: "roomId",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "player",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
     name: "joinRoom",
     inputs: [
       {
@@ -81,6 +149,19 @@ export default [
   },
   {
     type: "function",
+    name: "owner",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
     name: "rooms",
     inputs: [
       {
@@ -90,6 +171,11 @@ export default [
       },
     ],
     outputs: [
+      {
+        name: "totalPlayers",
+        type: "uint256",
+        internalType: "uint256",
+      },
       {
         name: "gameStartTime",
         type: "uint256",
@@ -114,6 +200,47 @@ export default [
         name: "gameEnded",
         type: "bool",
         internalType: "bool",
+      },
+      {
+        name: "forfeitedStake",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "correctGuessers",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "rewardsCalculated",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "setStakeAmount",
+    inputs: [
+      {
+        name: "_newStakeAmount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "stakeAmount",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
@@ -173,5 +300,25 @@ export default [
       },
     ],
     anonymous: false,
+  },
+  {
+    type: "error",
+    name: "GameNotEnded",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "NoRewardAvailable",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "PlayerNotInRoom",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "RewardAlreadyClaimed",
+    inputs: [],
   },
 ] as const;

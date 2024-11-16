@@ -1,14 +1,52 @@
 import Header from "@/components/Header";
+import { useWriteGameCreateRoom } from "@/generated";
+import { generateRandomPlayerIndex } from "@/utils/game";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { baseSepolia } from "viem/chains";
+import { usePublicClient } from "wagmi";
+import { decodeEventLog, parseEther } from "viem";
+import gameAbi from "@/abis/Game";
+import { useMutation } from "@tanstack/react-query";
 
 export default function Home() {
   const router = useRouter();
   const [roomId, setRoomId] = useState("");
+  const [numPlayers, setNumPlayers] = useState<number>(3);
 
-  const handleCreateRoom = () => {
-    router.push(`/room/23`);
-  };
+  const client = usePublicClient({ chainId: baseSepolia.id }); // TODO: support more chains
+  const { writeContractAsync: createRoom } = useWriteGameCreateRoom();
+
+  const { mutateAsync: handleCreateRoom, isPending: isRoomCreationPending } =
+    useMutation({
+      mutationKey: ["createRoom", createRoom, client, numPlayers, router],
+      mutationFn: async () => {
+        try {
+          const imposter = generateRandomPlayerIndex(numPlayers);
+          console.log("creating room...");
+          const hash = await createRoom({
+            args: [BigInt(numPlayers), BigInt(imposter)],
+            value: parseEther("0.0001"),
+          });
+
+          const receipt = await client?.waitForTransactionReceipt({ hash });
+          if (!receipt) throw new Error("Failed to get transaction receipt");
+          if (!receipt.logs?.[0]) throw new Error("No event logs found");
+
+          const { args } = decodeEventLog({
+            abi: gameAbi,
+            data: receipt.logs[0].data,
+            topics: receipt.logs[0].topics,
+          });
+
+          const newRoomId = args.roomId;
+          console.log("Room created with ID:", newRoomId);
+          router.push(`/room/${newRoomId}`);
+        } catch (error) {
+          console.error("Failed to create room:", error);
+        }
+      },
+    });
 
   const handleJoinRoom = (roomId: string) => {
     if (!roomId) return;
@@ -55,11 +93,15 @@ export default function Home() {
                          focus:border-[#ff2e63] transition-all duration-300"
             >
               <div className="relative">
-                <select className="w-full h-full appearance-none bg-transparent border-none text-white text-lg md:text-xl rounded-xl pr-10 pl-4">
-                  <option value="3">3 Players</option>
-                  <option value="4">4 Players</option>
-                  <option value="5">5 Players</option>
-                  <option value="6">6 Players</option>
+                <select
+                  value={numPlayers}
+                  onChange={(e) => setNumPlayers(Number(e.target.value))}
+                  className="w-full h-full appearance-none outline-none bg-transparent border-none text-white text-lg md:text-xl rounded-xl flex items-center justif"
+                >
+                  <option value={3}>3 Players</option>
+                  <option value={4}>4 Players</option>
+                  <option value={5}>5 Players</option>
+                  <option value={6}>6 Players</option>
                 </select>
                 <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                   <svg
@@ -81,30 +123,54 @@ export default function Home() {
             </div>
 
             <button
-              onClick={handleCreateRoom}
+              onClick={() => handleCreateRoom()}
+              disabled={isRoomCreationPending}
               className="w-full bg-gradient-to-r from-[#ff2e63] to-[#ff447c]
                        text-white text-xl md:text-2xl font-bold py-4 md:py-6 px-6 md:px-8 rounded-2xl
                        transform transition-all duration-300
                        hover:scale-105 hover:shadow-[0_0_50px_rgba(255,46,99,0.4)]
-                       active:scale-95 group relative overflow-hidden"
+                       active:scale-95 group relative overflow-hidden disabled:opacity-60 disabled:cursor-not-allowed"
             >
               <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
 
               <span className="flex items-center justify-center gap-3">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 md:h-8 md:w-8 group-hover:rotate-180 transition-transform duration-500"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 4v16m8-8H4"
-                  />
-                </svg>
+                {isRoomCreationPending ? (
+                  <svg
+                    className="animate-spin h-6 w-6 md:h-8 md:w-8 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      stroke-width="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 md:h-8 md:w-8 group-hover:rotate-180 transition-transform duration-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 4v16m8-8H4"
+                    />
+                  </svg>
+                )}
                 Create Room
               </span>
             </button>
