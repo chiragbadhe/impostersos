@@ -5,6 +5,7 @@ import {
 } from "@/generated";
 import { useMutation } from "@tanstack/react-query";
 import Link from "next/link";
+import { useState } from "react";
 import { formatEther } from "viem";
 import { baseSepolia } from "viem/chains";
 import { useAccount, usePublicClient } from "wagmi";
@@ -15,6 +16,7 @@ interface ResultProps {
 }
 
 export function Result({ roomId, setPopConfetti }: ResultProps) {
+  const [claimHash, setClaimHash] = useState("");
   const { address } = useAccount();
   const { data: hasAlreadyClaimed, refetch: fetchClaimStatus } =
     useReadGameHasClaimedReward({
@@ -36,6 +38,7 @@ export function Result({ roomId, setPopConfetti }: ResultProps) {
             const hash = await claimReward({
               args: [roomId],
             });
+            setClaimHash(hash);
             await client?.waitForTransactionReceipt({ hash });
             await fetchClaimStatus();
             setPopConfetti(true);
@@ -78,7 +81,11 @@ export function Result({ roomId, setPopConfetti }: ResultProps) {
             </Link>
           )}
           {hasAlreadyClaimed && (
-            <Link href={`#`} target="_blank" rel="noreferrer">
+            <Link
+              href={`https://base-sepolia.blockscout.com/tx/${claimHash}`}
+              target="_blank"
+              rel="noreferrer"
+            >
               <button className="px-8 py-3 rounded-full transition-transform flex-grow disabled:cursor-not-allowed disabled:opacity-60 bg-white text-gray-900 hover:scale-105">
                 View on Blockscout
               </button>
