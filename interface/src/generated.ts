@@ -10,7 +10,10 @@ import {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const gameAbi = [
   {
@@ -226,14 +229,23 @@ export const gameAbi = [
 ] as const
 
 /**
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const gameAddress = {
+  545: '0x4a56DaC578438f566e71587a256a823c8a75B376',
+  2810: '0x4a56DaC578438f566e71587a256a823c8a75B376',
   84532: '0x6E45968ceC51384F15B1161D03179AD5Bf0C341A',
+  534351: '0x4a56DaC578438f566e71587a256a823c8a75B376',
 } as const
 
 /**
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const gameConfig = { address: gameAddress, abi: gameAbi } as const
 
@@ -244,7 +256,10 @@ export const gameConfig = { address: gameAddress, abi: gameAbi } as const
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link gameAbi}__
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useReadGame = /*#__PURE__*/ createUseReadContract({
   abi: gameAbi,
@@ -254,7 +269,10 @@ export const useReadGame = /*#__PURE__*/ createUseReadContract({
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"GAME_DURATION"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useReadGameGameDuration = /*#__PURE__*/ createUseReadContract({
   abi: gameAbi,
@@ -265,7 +283,10 @@ export const useReadGameGameDuration = /*#__PURE__*/ createUseReadContract({
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"entropy"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useReadGameEntropy = /*#__PURE__*/ createUseReadContract({
   abi: gameAbi,
@@ -276,7 +297,10 @@ export const useReadGameEntropy = /*#__PURE__*/ createUseReadContract({
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"getClaimableReward"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useReadGameGetClaimableReward =
   /*#__PURE__*/ createUseReadContract({
@@ -288,7 +312,10 @@ export const useReadGameGetClaimableReward =
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"getImposter"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useReadGameGetImposter = /*#__PURE__*/ createUseReadContract({
   abi: gameAbi,
@@ -299,7 +326,10 @@ export const useReadGameGetImposter = /*#__PURE__*/ createUseReadContract({
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"getRoomPlayers"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useReadGameGetRoomPlayers = /*#__PURE__*/ createUseReadContract({
   abi: gameAbi,
@@ -310,7 +340,10 @@ export const useReadGameGetRoomPlayers = /*#__PURE__*/ createUseReadContract({
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"hasClaimedReward"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useReadGameHasClaimedReward = /*#__PURE__*/ createUseReadContract({
   abi: gameAbi,
@@ -321,7 +354,10 @@ export const useReadGameHasClaimedReward = /*#__PURE__*/ createUseReadContract({
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"hasPlayerVoted"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useReadGameHasPlayerVoted = /*#__PURE__*/ createUseReadContract({
   abi: gameAbi,
@@ -332,7 +368,10 @@ export const useReadGameHasPlayerVoted = /*#__PURE__*/ createUseReadContract({
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"isRoomPending"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useReadGameIsRoomPending = /*#__PURE__*/ createUseReadContract({
   abi: gameAbi,
@@ -343,7 +382,10 @@ export const useReadGameIsRoomPending = /*#__PURE__*/ createUseReadContract({
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"owner"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useReadGameOwner = /*#__PURE__*/ createUseReadContract({
   abi: gameAbi,
@@ -354,7 +396,10 @@ export const useReadGameOwner = /*#__PURE__*/ createUseReadContract({
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"rooms"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useReadGameRooms = /*#__PURE__*/ createUseReadContract({
   abi: gameAbi,
@@ -365,7 +410,10 @@ export const useReadGameRooms = /*#__PURE__*/ createUseReadContract({
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"stakeAmount"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useReadGameStakeAmount = /*#__PURE__*/ createUseReadContract({
   abi: gameAbi,
@@ -376,7 +424,10 @@ export const useReadGameStakeAmount = /*#__PURE__*/ createUseReadContract({
 /**
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link gameAbi}__
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useWriteGame = /*#__PURE__*/ createUseWriteContract({
   abi: gameAbi,
@@ -386,7 +437,10 @@ export const useWriteGame = /*#__PURE__*/ createUseWriteContract({
 /**
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"_entropyCallback"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useWriteGameEntropyCallback = /*#__PURE__*/ createUseWriteContract(
   { abi: gameAbi, address: gameAddress, functionName: '_entropyCallback' },
@@ -395,7 +449,10 @@ export const useWriteGameEntropyCallback = /*#__PURE__*/ createUseWriteContract(
 /**
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"claimReward"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useWriteGameClaimReward = /*#__PURE__*/ createUseWriteContract({
   abi: gameAbi,
@@ -406,7 +463,10 @@ export const useWriteGameClaimReward = /*#__PURE__*/ createUseWriteContract({
 /**
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"createRoom"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useWriteGameCreateRoom = /*#__PURE__*/ createUseWriteContract({
   abi: gameAbi,
@@ -417,7 +477,10 @@ export const useWriteGameCreateRoom = /*#__PURE__*/ createUseWriteContract({
 /**
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"endGame"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useWriteGameEndGame = /*#__PURE__*/ createUseWriteContract({
   abi: gameAbi,
@@ -428,7 +491,10 @@ export const useWriteGameEndGame = /*#__PURE__*/ createUseWriteContract({
 /**
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"joinRoom"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useWriteGameJoinRoom = /*#__PURE__*/ createUseWriteContract({
   abi: gameAbi,
@@ -439,7 +505,10 @@ export const useWriteGameJoinRoom = /*#__PURE__*/ createUseWriteContract({
 /**
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"setStakeAmount"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useWriteGameSetStakeAmount = /*#__PURE__*/ createUseWriteContract({
   abi: gameAbi,
@@ -450,7 +519,10 @@ export const useWriteGameSetStakeAmount = /*#__PURE__*/ createUseWriteContract({
 /**
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"vote"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useWriteGameVote = /*#__PURE__*/ createUseWriteContract({
   abi: gameAbi,
@@ -461,7 +533,10 @@ export const useWriteGameVote = /*#__PURE__*/ createUseWriteContract({
 /**
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link gameAbi}__
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useSimulateGame = /*#__PURE__*/ createUseSimulateContract({
   abi: gameAbi,
@@ -471,7 +546,10 @@ export const useSimulateGame = /*#__PURE__*/ createUseSimulateContract({
 /**
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"_entropyCallback"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useSimulateGameEntropyCallback =
   /*#__PURE__*/ createUseSimulateContract({
@@ -483,7 +561,10 @@ export const useSimulateGameEntropyCallback =
 /**
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"claimReward"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useSimulateGameClaimReward =
   /*#__PURE__*/ createUseSimulateContract({
@@ -495,7 +576,10 @@ export const useSimulateGameClaimReward =
 /**
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"createRoom"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useSimulateGameCreateRoom =
   /*#__PURE__*/ createUseSimulateContract({
@@ -507,7 +591,10 @@ export const useSimulateGameCreateRoom =
 /**
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"endGame"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useSimulateGameEndGame = /*#__PURE__*/ createUseSimulateContract({
   abi: gameAbi,
@@ -518,7 +605,10 @@ export const useSimulateGameEndGame = /*#__PURE__*/ createUseSimulateContract({
 /**
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"joinRoom"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useSimulateGameJoinRoom = /*#__PURE__*/ createUseSimulateContract({
   abi: gameAbi,
@@ -529,7 +619,10 @@ export const useSimulateGameJoinRoom = /*#__PURE__*/ createUseSimulateContract({
 /**
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"setStakeAmount"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useSimulateGameSetStakeAmount =
   /*#__PURE__*/ createUseSimulateContract({
@@ -541,7 +634,10 @@ export const useSimulateGameSetStakeAmount =
 /**
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link gameAbi}__ and `functionName` set to `"vote"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useSimulateGameVote = /*#__PURE__*/ createUseSimulateContract({
   abi: gameAbi,
@@ -552,7 +648,10 @@ export const useSimulateGameVote = /*#__PURE__*/ createUseSimulateContract({
 /**
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link gameAbi}__
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useWatchGameEvent = /*#__PURE__*/ createUseWatchContractEvent({
   abi: gameAbi,
@@ -562,7 +661,10 @@ export const useWatchGameEvent = /*#__PURE__*/ createUseWatchContractEvent({
 /**
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link gameAbi}__ and `eventName` set to `"GameEnded"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useWatchGameGameEndedEvent =
   /*#__PURE__*/ createUseWatchContractEvent({
@@ -574,7 +676,10 @@ export const useWatchGameGameEndedEvent =
 /**
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link gameAbi}__ and `eventName` set to `"RoomCreated"`
  *
- * [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Flow Evm Testnet Flow Diver__](https://testnet.flowdiver.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Morph Holesky Morph Holesky Explorer__](https://explorer-holesky.morphl2.io/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
+ * - [__View Contract on Base Sepolia Basescan__](https://sepolia.basescan.org/address/0x6E45968ceC51384F15B1161D03179AD5Bf0C341A)
+ * - [__View Contract on Scroll Sepolia Scrollscan__](https://sepolia.scrollscan.com/address/0x4a56DaC578438f566e71587a256a823c8a75B376)
  */
 export const useWatchGameRoomCreatedEvent =
   /*#__PURE__*/ createUseWatchContractEvent({

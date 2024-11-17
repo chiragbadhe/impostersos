@@ -3,6 +3,7 @@ import {
   useReadGameHasClaimedReward,
   useWriteGameClaimReward,
 } from "@/generated";
+import { SupportedChain, supportedChain } from "@/utils/chain";
 import { useMutation } from "@tanstack/react-query";
 import Link from "next/link";
 import { useState } from "react";
@@ -17,7 +18,7 @@ interface ResultProps {
 
 export function Result({ roomId, setPopConfetti }: ResultProps) {
   const [claimHash, setClaimHash] = useState("");
-  const { address } = useAccount();
+  const { address, chain } = useAccount();
   const { data: hasAlreadyClaimed, refetch: fetchClaimStatus } =
     useReadGameHasClaimedReward({
       args: address ? [roomId, address] : undefined,
@@ -82,7 +83,7 @@ export function Result({ roomId, setPopConfetti }: ResultProps) {
           )}
           {hasAlreadyClaimed && (
             <Link
-              href={`https://base-sepolia.blockscout.com/tx/${claimHash}`}
+              href={`${supportedChain[(chain?.id as SupportedChain) ?? 84532].blockscoutExplorer}/tx/${claimHash}`}
               target="_blank"
               rel="noreferrer"
             >
