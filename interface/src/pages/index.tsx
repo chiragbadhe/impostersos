@@ -3,19 +3,21 @@ import { useWriteGameCreateRoom, useWriteGameJoinRoom } from "@/generated";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { baseSepolia } from "viem/chains";
-import { usePublicClient } from "wagmi";
+import { useAccount, usePublicClient } from "wagmi";
 import { decodeEventLog, parseEther } from "viem";
 import gameAbi from "@/abis/Game";
 import { useMutation } from "@tanstack/react-query";
 import { generateImages } from "@/utils/image";
 import { pinata } from "@/utils/ipfs";
 import { generateRandomPlayerIndex } from "@/utils/game";
+import { SupportedChain, supportedChain } from "@/utils/chain";
 
 export default function Home() {
   const router = useRouter();
   const { room } = router.query;
   const [roomId, setRoomId] = useState("");
   const [numPlayers, setNumPlayers] = useState<number>(3);
+  const { chain } = useAccount();
 
   useEffect(() => {
     if (room && typeof room === "string") setRoomId(room);
@@ -38,7 +40,8 @@ export default function Home() {
               groupId: "230b2a95-9360-4560-a6b7-37fc57346f91",
             });
 
-            const usePyth = false;
+            const usePyth =
+              supportedChain[(chain?.id as SupportedChain) ?? 84532].usePyth;
             const hash = await createRoom({
               args: [
                 BigInt(numPlayers),

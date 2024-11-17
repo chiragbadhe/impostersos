@@ -61,7 +61,11 @@ export function Result({ roomId, setPopConfetti }: ResultProps) {
           <p className="text-2xl text-red-300">Better Luck Next Time!</p>
         )}
         {claimableReward && (
-          <div className="text-5xl">{formatEther(claimableReward)} ETH</div>
+          <div className="text-5xl">
+            {formatEther(claimableReward)}{" "}
+            {supportedChain[(chain?.id as SupportedChain) ?? 84532]
+              .nativeCurrency.symbol ?? "ETH"}
+          </div>
         )}
         <div className="flex items-center space-x-4">
           {claimableReward &&
